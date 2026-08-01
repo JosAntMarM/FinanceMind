@@ -316,8 +316,13 @@ section { position: relative; }
   letter-spacing: -0.01em;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
-.hero__title span { display: block; }
+.hero__title > span {
+  width: 100%;
+  justify-content: center;
+}
 .hero__title .reveal--accent {
   font-style: italic;
   font-weight: 300;
@@ -492,9 +497,12 @@ section { position: relative; }
 
 .value-card {
   background: var(--background-secondary);
-  padding: 44px 30px;
   transition: background 0.4s var(--ease);
   position: relative;
+}
+.value-card__spotlight {
+  padding: 44px 30px;
+  height: 100%;
 }
 .value-card::before {
   content: "";
@@ -618,7 +626,7 @@ section { position: relative; }
   height: 100%;
   width: 0%;
   background: linear-gradient(90deg, var(--cyan), var(--green));
-  transition: width 1.8s var(--ease);
+  transition: width 0.15s linear;
 }
 
 .method-step { position: relative; padding-top: 44px; }
@@ -755,6 +763,11 @@ section { position: relative; }
   z-index: 2;
   max-width: 720px;
   margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 .cta-final__title {
   font-family: var(--font-display);
