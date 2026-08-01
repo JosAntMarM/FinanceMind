@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react'
 import Reveal from '../components/Reveal'
 import SectionLink from '../components/SectionLink'
-import BlurText from '../components/reactbits/BlurText'
+import SplitText from '../components/reactbits/SplitText'
+import Aurora from '../components/reactbits/Aurora'
 
 export default function Hero() {
   const heroRef = useRef(null)
@@ -26,6 +27,9 @@ export default function Hero() {
 
   return (
     <section className="hero" id="top" ref={heroRef}>
+      <div className="hero__aurora" aria-hidden="true">
+        <Aurora colorStops={['#00CFFF', '#7CFF00', '#00CFFF']} amplitude={0.7} blend={0.45} speed={0.35} />
+      </div>
       <div className="hero__market-line" aria-hidden="true">
         <svg viewBox="0 0 1440 800" preserveAspectRatio="none">
           <path
@@ -43,22 +47,43 @@ export default function Hero() {
           FINANCEMIND PERÚ
         </Reveal>
         <h1 className="hero__title">
-          <BlurText
+          <SplitText
             text="EL CONOCIMIENTO"
             tag="span"
-            animateBy="words"
-            direction="top"
-            delay={90}
+            splitType="chars"
+            delay={35}
+            duration={0.9}
+            ease="power3.out"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
             threshold={0.2}
+            rootMargin="-80px"
           />
-          <BlurText
-            text="ES LA MEJOR INVERSIÓN."
+          <SplitText
+            text="ES LA MEJOR"
             tag="span"
             className="reveal--accent"
-            animateBy="words"
-            direction="top"
-            delay={90}
+            splitType="chars"
+            delay={35}
+            duration={0.9}
+            ease="power3.out"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
             threshold={0.2}
+            rootMargin="-80px"
+          />
+          <SplitText
+            text="INVERSIÓN."
+            tag="span"
+            className="reveal--accent"
+            splitType="chars"
+            delay={35}
+            duration={0.9}
+            ease="power3.out"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.2}
+            rootMargin="-80px"
           />
         </h1>
         <Reveal as="p" className="hero__subtitle">
