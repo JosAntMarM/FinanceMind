@@ -1,20 +1,14 @@
-/**
- * Aurora — from React Bits (https://reactbits.dev)
- * Source: DavidHDev/react-bits, src/content/Backgrounds/Aurora
- * Copied verbatim (no modifications) per the integration instructions.
- * Requires: ogl
- */
-import { Renderer, Program, Mesh, Color, Triangle } from 'ogl'
-import { useEffect, useRef } from 'react'
+import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
+import { useEffect, useRef } from 'react';
 
-import './Aurora.css'
+import './Aurora.css';
 
 const VERT = `#version 300 es
 in vec2 position;
 void main() {
   gl_Position = vec4(position, 0.0, 1.0);
 }
-`
+`;
 
 const FRAG = `#version 300 es
 precision highp float;
@@ -76,18 +70,18 @@ struct ColorStop {
   float position;
 };
 
-#define COLOR_RAMP(colors, factor, finalColor) {              \\
-  int index = 0;                                            \\
-  for (int i = 0; i < 2; i++) {                               \\
-     ColorStop currentColor = colors[i];                    \\
-     bool isInBetween = currentColor.position <= factor;    \\
-     index = int(mix(float(index), float(i), float(isInBetween))); \\
-  }                                                         \\
-  ColorStop currentColor = colors[index];                   \\
-  ColorStop nextColor = colors[index + 1];                  \\
-  float range = nextColor.position - currentColor.position; \\
-  float lerpFactor = (factor - currentColor.position) / range; \\
-  finalColor = mix(currentColor.color, nextColor.color, lerpFactor); \\
+#define COLOR_RAMP(colors, factor, finalColor) {              \
+  int index = 0;                                            \
+  for (int i = 0; i < 2; i++) {                               \
+     ColorStop currentColor = colors[i];                    \
+     bool isInBetween = currentColor.position <= factor;    \
+     index = int(mix(float(index), float(i), float(isInBetween))); \
+  }                                                         \
+  ColorStop currentColor = colors[index];                   \
+  ColorStop nextColor = colors[index + 1];                  \
+  float range = nextColor.position - currentColor.position; \
+  float lerpFactor = (factor - currentColor.position) / range; \
+  finalColor = mix(currentColor.color, nextColor.color, lerpFactor); \
 }
 
 void main() {
@@ -113,52 +107,52 @@ void main() {
   
   fragColor = vec4(auroraColor * auroraAlpha, auroraAlpha);
 }
-`
+`;
 
 export default function Aurora(props) {
-  const { colorStops = ['#5227FF', '#7cff67', '#5227FF'], amplitude = 1.0, blend = 0.5 } = props
-  const propsRef = useRef(props)
-  propsRef.current = props
+  const { colorStops = ['#5227FF', '#7cff67', '#5227FF'], amplitude = 1.0, blend = 0.5 } = props;
+  const propsRef = useRef(props);
+  propsRef.current = props;
 
-  const ctnDom = useRef(null)
+  const ctnDom = useRef(null);
 
   useEffect(() => {
-    const ctn = ctnDom.current
-    if (!ctn) return
+    const ctn = ctnDom.current;
+    if (!ctn) return;
 
     const renderer = new Renderer({
       alpha: true,
       premultipliedAlpha: true,
       antialias: true
-    })
-    const gl = renderer.gl
-    gl.clearColor(0, 0, 0, 0)
-    gl.enable(gl.BLEND)
-    gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA)
-    gl.canvas.style.backgroundColor = 'transparent'
+    });
+    const gl = renderer.gl;
+    gl.clearColor(0, 0, 0, 0);
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+    gl.canvas.style.backgroundColor = 'transparent';
 
-    let program
+    let program;
 
     function resize() {
-      if (!ctn) return
-      const width = ctn.offsetWidth
-      const height = ctn.offsetHeight
-      renderer.setSize(width, height)
+      if (!ctn) return;
+      const width = ctn.offsetWidth;
+      const height = ctn.offsetHeight;
+      renderer.setSize(width, height);
       if (program) {
-        program.uniforms.uResolution.value = [width, height]
+        program.uniforms.uResolution.value = [width, height];
       }
     }
-    window.addEventListener('resize', resize)
+    window.addEventListener('resize', resize);
 
-    const geometry = new Triangle(gl)
+    const geometry = new Triangle(gl);
     if (geometry.attributes.uv) {
-      delete geometry.attributes.uv
+      delete geometry.attributes.uv;
     }
 
     const colorStopsArray = colorStops.map(hex => {
-      const c = new Color(hex)
-      return [c.r, c.g, c.b]
-    })
+      const c = new Color(hex);
+      return [c.r, c.g, c.b];
+    });
 
     program = new Program(gl, {
       vertex: VERT,
@@ -170,39 +164,39 @@ export default function Aurora(props) {
         uResolution: { value: [ctn.offsetWidth, ctn.offsetHeight] },
         uBlend: { value: blend }
       }
-    })
+    });
 
-    const mesh = new Mesh(gl, { geometry, program })
-    ctn.appendChild(gl.canvas)
+    const mesh = new Mesh(gl, { geometry, program });
+    ctn.appendChild(gl.canvas);
 
-    let animateId = 0
+    let animateId = 0;
     const update = t => {
-      animateId = requestAnimationFrame(update)
-      const { time = t * 0.01, speed = 1.0 } = propsRef.current
-      program.uniforms.uTime.value = time * speed * 0.1
-      program.uniforms.uAmplitude.value = propsRef.current.amplitude ?? 1.0
-      program.uniforms.uBlend.value = propsRef.current.blend ?? blend
-      const stops = propsRef.current.colorStops ?? colorStops
+      animateId = requestAnimationFrame(update);
+      const { time = t * 0.01, speed = 1.0 } = propsRef.current;
+      program.uniforms.uTime.value = time * speed * 0.1;
+      program.uniforms.uAmplitude.value = propsRef.current.amplitude ?? 1.0;
+      program.uniforms.uBlend.value = propsRef.current.blend ?? blend;
+      const stops = propsRef.current.colorStops ?? colorStops;
       program.uniforms.uColorStops.value = stops.map(hex => {
-        const c = new Color(hex)
-        return [c.r, c.g, c.b]
-      })
-      renderer.render({ scene: mesh })
-    }
-    animateId = requestAnimationFrame(update)
+        const c = new Color(hex);
+        return [c.r, c.g, c.b];
+      });
+      renderer.render({ scene: mesh });
+    };
+    animateId = requestAnimationFrame(update);
 
-    resize()
+    resize();
 
     return () => {
-      cancelAnimationFrame(animateId)
-      window.removeEventListener('resize', resize)
+      cancelAnimationFrame(animateId);
+      window.removeEventListener('resize', resize);
       if (ctn && gl.canvas.parentNode === ctn) {
-        ctn.removeChild(gl.canvas)
+        ctn.removeChild(gl.canvas);
       }
-      gl.getExtension('WEBGL_lose_context')?.loseContext()
-    }
+      gl.getExtension('WEBGL_lose_context')?.loseContext();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [amplitude])
+  }, [amplitude]);
 
-  return <div ref={ctnDom} className="aurora-container" />
+  return <div ref={ctnDom} className="aurora-container" />;
 }
