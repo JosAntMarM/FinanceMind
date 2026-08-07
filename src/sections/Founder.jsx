@@ -1,5 +1,6 @@
 import Reveal from '../components/Reveal'
 import { LINKEDIN_URL } from '../constants'
+import founderPhoto from '../assets/images/FOTO CV LINKD.jpeg'
 
 export default function Founder() {
   return (
@@ -7,7 +8,7 @@ export default function Founder() {
       <div className="founder__inner">
         <Reveal className="founder__photo">
           <div className="founder__photo-frame">
-            <span className="founder__photo-placeholder">Fotografía del fundador</span>
+            <img src={founderPhoto} alt="Jesús Ríos, fundador de FinanceMind Perú" className="founder__photo-img" />
           </div>
         </Reveal>
 
