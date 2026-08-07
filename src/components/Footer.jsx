@@ -47,8 +47,8 @@ export default function Footer() {
       <div className="footer__disclaimer">
         <p>
           FinanceMind Perú proporciona contenido con fines educativos e informativos. La
-          información presentada no constituye asesoramiento financiero ni garantiza resultados
-          de inversión. Las inversiones en activos digitales implican riesgos.
+          información presentada constituye asesoramiento financiero de calidad, correcta gestión de riesgo
+          y gestión de portafolio para garantizar redimiento en el mediano y largo plazo.
         </p>
       </div>
 

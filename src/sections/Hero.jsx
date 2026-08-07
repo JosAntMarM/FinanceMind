@@ -34,14 +34,6 @@ export default function Hero() {
       <div className="hero__aurora" aria-hidden="true">
         <Aurora colorStops={['#00CFFF', '#7CFF00', '#00CFFF']} amplitude={0.7} blend={0.45} speed={0.35} />
       </div>
-      <div className="hero__market-line" aria-hidden="true">
-        <svg viewBox="0 0 1440 800" preserveAspectRatio="none">
-          <path
-            className="market-path"
-            d="M -50,620 L 120,600 L 260,660 L 380,540 L 520,590 L 660,460 L 800,500 L 940,360 L 1080,410 L 1220,240 L 1360,290 L 1500,120"
-          />
-        </svg>
-      </div>
       <div className="hero__glow hero__glow--cyan" ref={cyanGlowRef} aria-hidden="true"></div>
       <div className="hero__glow hero__glow--green" ref={greenGlowRef} aria-hidden="true"></div>
       <div className="hero__grid" aria-hidden="true"></div>
@@ -103,15 +95,12 @@ export default function Hero() {
             Conoce la Academia
           </a>
           <SectionLink href="#nosotros" className="btn btn--ghost">
-            Descubre FinanceMind
+            Metodología FINANCEMIND
           </SectionLink>
         </Reveal>
       </div>
 
-      <div className="hero__scroll" aria-hidden="true">
-        <span></span>
-        <p>Scroll</p>
-      </div>
+      
     </section>
   )
 }
