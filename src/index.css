@@ -252,9 +252,25 @@ section { position: relative; }
   position: relative;
   padding: 140px 24px 100px;
   overflow: hidden;
+  background: #010A11;
+}
+
+.hero__bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.6;
+}
+
+.hero__bg-overlay {
+  position: absolute;
+  inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 207, 255, 0.06), transparent 60%),
-    linear-gradient(180deg, #010A11 0%, var(--background) 55%, #010A11 100%);
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 207, 255, 0.05), transparent 60%),
+    linear-gradient(180deg, rgba(1, 10, 17, 0.55) 0%, rgba(3, 18, 28, 0.72) 45%, rgba(1, 10, 17, 0.92) 100%);
 }
 
 .hero__grid {
@@ -396,9 +412,24 @@ section { position: relative; }
    ========================================================== */
 .about {
   padding: 160px 24px;
-  background: var(--background);
+  position: relative;
+  overflow: hidden;
+  background-color: var(--background);
+}
+.about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(180deg, rgba(3, 18, 28, 0.78), rgba(3, 18, 28, 0.9)),
+    url('./assets/images/FONDO SEGUNDARIO.png');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
 }
 .about__inner {
+  position: relative;
+  z-index: 1;
   max-width: var(--container);
   margin: 0 auto;
   display: grid;
@@ -423,32 +454,18 @@ section { position: relative; }
   background: var(--cyan);
   opacity: 0.08;
   filter: blur(100px);
-  border-radius: 50%;
 }
-.about__chart { width: 80%; height: 80%; position: relative; z-index: 1; }
-.grid-line { stroke: var(--line); stroke-width: 1; }
-.chart-line {
-  fill: none;
-  stroke: var(--cyan);
-  stroke-width: 2;
-  stroke-dasharray: 900;
-  stroke-dashoffset: 900;
-  transition: stroke-dashoffset 1.6s var(--ease);
+.about__logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
 }
-.about__media.is-visible .chart-line { stroke-dashoffset: 0; }
-.candle { opacity: 0; transition: opacity 0.4s var(--ease); }
-.about__media.is-visible .candle { opacity: 1; }
-.candle--up { fill: rgba(124, 255, 0, 0.55); }
-.candle--down { fill: rgba(138, 150, 156, 0.4); }
-.about__media.is-visible .candle:nth-child(1) { transition-delay: 0.2s; }
-.about__media.is-visible .candle:nth-child(2) { transition-delay: 0.3s; }
-.about__media.is-visible .candle:nth-child(3) { transition-delay: 0.4s; }
-.about__media.is-visible .candle:nth-child(4) { transition-delay: 0.5s; }
-.about__media.is-visible .candle:nth-child(5) { transition-delay: 0.6s; }
-.about__media.is-visible .candle:nth-child(6) { transition-delay: 0.7s; }
-.about__media.is-visible .candle:nth-child(7) { transition-delay: 0.8s; }
-.about__media.is-visible .candle:nth-child(8) { transition-delay: 0.9s; }
-.about__media.is-visible .candle:nth-child(9) { transition-delay: 1s; }
+.about__media.is-visible .about__logo { opacity: 1; transform: scale(1); }
 
 .about__text {
   margin-top: 24px;

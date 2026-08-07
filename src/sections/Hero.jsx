@@ -3,6 +3,8 @@ import Reveal from '../components/Reveal'
 import SectionLink from '../components/SectionLink'
 import SplitText from '../components/reactbits/SplitText'
 import Aurora from '../components/reactbits/Aurora'
+import { WHATSAPP_URL } from '../constants'
+import heroBg from '../assets/images/FONDO PRINCIPAL.png'
 
 export default function Hero() {
   const heroRef = useRef(null)
@@ -27,6 +29,8 @@ export default function Hero() {
 
   return (
     <section className="hero" id="top" ref={heroRef}>
+      <img src={heroBg} alt="" className="hero__bg-image" aria-hidden="true" />
+      <div className="hero__bg-overlay" aria-hidden="true"></div>
       <div className="hero__aurora" aria-hidden="true">
         <Aurora colorStops={['#00CFFF', '#7CFF00', '#00CFFF']} amplitude={0.7} blend={0.45} speed={0.35} />
       </div>
@@ -95,9 +99,9 @@ export default function Hero() {
         </Reveal>
 
         <Reveal className="hero__actions">
-          <SectionLink href="#academia" className="btn btn--primary">
+          <a href={WHATSAPP_URL} className="btn btn--primary" target="_blank" rel="noopener noreferrer">
             Conoce la Academia
-          </SectionLink>
+          </a>
           <SectionLink href="#nosotros" className="btn btn--ghost">
             Descubre FinanceMind
           </SectionLink>
