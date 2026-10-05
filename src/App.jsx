@@ -1,3 +1,5 @@
+import { NavigationProvider } from './context/NavigationContext'
+import { useNav } from './hooks/useNav'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Hero from './sections/Hero'
@@ -7,22 +9,39 @@ import Academy from './sections/Academy'
 import Methodology from './sections/Methodology'
 import Founder from './sections/Founder'
 import CtaFinal from './sections/CtaFinal'
+import SeminarPage from './pages/SeminarPage'
 
-export default function App() {
+function MainContent() {
+  const { isSeminar } = useNav()
+
   return (
     <>
-      <div className="grain-overlay"></div>
+      <div className="grain-overlay" aria-hidden="true"></div>
       <Navbar />
       <main>
-        <Hero />
-        <About />
-        <ValueProps />
-        <Academy />
-        <Methodology />
-        <Founder />
-        <CtaFinal />
+        {isSeminar ? (
+          <SeminarPage />
+        ) : (
+          <>
+            <Hero />
+            <About />
+            <ValueProps />
+            <Academy />
+            <Methodology />
+            <Founder />
+            <CtaFinal />
+          </>
+        )}
       </main>
       <Footer />
     </>
+  )
+}
+
+export default function App() {
+  return (
+    <NavigationProvider>
+      <MainContent />
+    </NavigationProvider>
   )
 }

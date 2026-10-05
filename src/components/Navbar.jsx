@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import SectionLink from './SectionLink'
 import logoBadge from '../assets/images/logo-badge.png'
-import { NAV_LINKS, WHATSAPP_URL, SEMINAR_URL } from '../constants'
+import { NAV_LINKS, WHATSAPP_URL } from '../constants'
+import { useNav } from '../hooks/useNav'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const { isSeminar, navigate } = useNav()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -16,15 +18,31 @@ export default function Navbar() {
 
   const closeMenu = () => setMenuOpen(false)
 
+  const handleSeminarClick = (e) => {
+    e.preventDefault()
+    closeMenu()
+    if (isSeminar) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      navigate('/seminario')
+    }
+  }
+
+  const handleLogoClick = (e) => {
+    e.preventDefault()
+    closeMenu()
+    navigate('/', '#top')
+  }
+
   return (
-    <header className={`navbar${scrolled ? ' is-scrolled' : ''}`} id="navbar">
+    <header className={`navbar${scrolled ? ' is-scrolled' : ''}${isSeminar ? ' navbar--seminar' : ''}`} id="navbar">
       <div className="navbar__inner">
-        <SectionLink href="#top" className="navbar__logo">
+        <a href="/" onClick={handleLogoClick} className="navbar__logo">
           <img src={logoBadge} alt="FinanceMind Perú" className="navbar__logo-img" />
           <span className="navbar__logo-text">
             FINANCEMIND<em>PERÚ</em>
           </span>
-        </SectionLink>
+        </a>
 
         <nav className="navbar__links" id="navLinks">
           {NAV_LINKS.map((link) => (
@@ -35,14 +53,15 @@ export default function Navbar() {
         </nav>
 
         <div className="navbar__ctas">
-          <a
-            href={SEMINAR_URL}
-            className="btn btn--ghost btn--nav"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
+            onClick={handleSeminarClick}
+            className={`btn btn--ghost btn--nav${isSeminar ? ' btn--nav-active' : ''}`}
+            aria-label="Página de Seminarios"
           >
+            <span className="navbar__nav-pulse" aria-hidden="true"></span>
             Seminario
-          </a>
+          </button>
           <a
             href={WHATSAPP_URL}
             className="btn btn--primary btn--nav"
@@ -77,15 +96,14 @@ export default function Navbar() {
             {link.label}
           </SectionLink>
         ))}
-        <a
-          href={SEMINAR_URL}
-          className="btn btn--ghost"
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={closeMenu}
+        <button
+          type="button"
+          onClick={handleSeminarClick}
+          className={`btn btn--ghost${isSeminar ? ' btn--nav-active' : ''}`}
         >
+          <span className="navbar__nav-pulse" aria-hidden="true"></span>
           Seminario
-        </a>
+        </button>
         <a
           href={WHATSAPP_URL}
           className="btn btn--primary"

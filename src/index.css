@@ -2,6 +2,8 @@
    FINANCEMIND PERÚ — DESIGN SYSTEM
    ========================================================== */
 
+@import './styles/seminar.css';
+
 :root {
   --background: #03121C;
   --background-secondary: #071C29;

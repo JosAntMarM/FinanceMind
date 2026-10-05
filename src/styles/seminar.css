@@ -1,0 +1,1147 @@
+/* ==========================================================
+   FINANCEMIND PERÚ — SEMINAR LANDING PAGE STYLES
+   ========================================================== */
+
+/* Navbar highlight on seminar page */
+.navbar--seminar {
+  background: rgba(3, 18, 28, 0.88);
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.btn--nav-active {
+  border-color: var(--green) !important;
+  color: var(--green) !important;
+  box-shadow: 0 0 16px rgba(124, 255, 0, 0.2);
+}
+
+.navbar__nav-pulse {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: pulse-dot 1.8s ease-in-out infinite;
+  margin-right: 6px;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.4; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* ==========================================================
+   1. SEMINAR HERO
+   ========================================================== */
+.seminar-hero {
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding: 150px 24px 80px;
+  overflow: hidden;
+  background: #010A11;
+}
+
+.seminar-hero__bg-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.45;
+}
+
+.seminar-hero__bg-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 90% 70% at 50% 10%, rgba(0, 207, 255, 0.08), transparent 70%),
+    linear-gradient(180deg, rgba(1, 10, 17, 0.65) 0%, rgba(3, 18, 28, 0.85) 50%, #03121C 100%);
+}
+
+.seminar-hero__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 65% at 50% 35%, black, transparent);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.seminar-hero__aurora {
+  position: absolute;
+  inset: 0;
+  opacity: 0.45;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.seminar-hero__glow {
+  position: absolute;
+  width: 580px;
+  height: 580px;
+  border-radius: 50%;
+  filter: blur(140px);
+  pointer-events: none;
+  opacity: 0.18;
+}
+.seminar-hero__glow--cyan {
+  top: -100px;
+  left: -80px;
+  background: var(--cyan);
+}
+.seminar-hero__glow--green {
+  bottom: -150px;
+  right: -80px;
+  background: var(--green);
+  opacity: 0.14;
+}
+
+/* Candlesticks & financial chart graphics */
+.seminar-hero__chart-bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 280px;
+  pointer-events: none;
+  opacity: 0.35;
+  overflow: hidden;
+}
+
+.seminar-hero__chart-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.seminar-hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 920px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.seminar-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  background: rgba(0, 207, 255, 0.08);
+  border: 1px solid rgba(0, 207, 255, 0.25);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 24px;
+  backdrop-filter: blur(10px);
+}
+
+.seminar-hero__badge-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 10px var(--green);
+  animation: pulse-dot 1.8s infinite;
+}
+
+.seminar-hero__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(38px, 6.8vw, 80px);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  display: flex;
+  flex-direction: column;
+}
+
+.seminar-hero__title-accent {
+  font-style: italic;
+  font-weight: 300;
+  background: linear-gradient(96deg, var(--cyan) 0%, var(--green) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.seminar-hero__subtitle {
+  margin-top: 26px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(20px, 2.8vw, 28px);
+  color: var(--white);
+  letter-spacing: 0.01em;
+}
+
+.seminar-hero__text {
+  margin-top: 16px;
+  max-width: 640px;
+  color: var(--gray);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.seminar-hero__actions {
+  margin-top: 40px;
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Crypto market live ticker strip */
+.seminar-hero__ticker {
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(7, 28, 41, 0.6);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  backdrop-filter: blur(8px);
+}
+
+.ticker-item__tag {
+  color: var(--cyan);
+  font-weight: 700;
+}
+
+.ticker-item__change {
+  color: var(--green);
+}
+
+/* ==========================================================
+   2. PRÓXIMO SEMINARIO & COUNTDOWN
+   ========================================================== */
+.seminar-next {
+  padding: 120px 24px;
+  background: var(--background-secondary);
+  position: relative;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.seminar-next::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 350px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(0, 207, 255, 0.09), transparent 70%);
+  pointer-events: none;
+}
+
+.seminar-next__container {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.seminar-next__header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.seminar-next__header .eyebrow {
+  justify-content: center;
+}
+.seminar-next__header .eyebrow::before {
+  display: none;
+}
+
+/* Main featured seminar card */
+.seminar-card {
+  background: linear-gradient(170deg, rgba(11, 37, 52, 0.75) 0%, rgba(7, 28, 41, 0.95) 100%);
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  padding: 48px 44px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(16px);
+}
+
+.seminar-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan), var(--green), transparent);
+}
+
+.seminar-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.seminar-card__live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(124, 255, 0, 0.12);
+  border: 1px solid rgba(124, 255, 0, 0.35);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--green);
+  text-transform: uppercase;
+}
+
+.seminar-card__live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: pulse-dot 1.5s infinite;
+}
+
+.seminar-card__badge-mode {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+.seminar-card__body {
+  margin-top: 32px;
+}
+
+.seminar-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.8vw, 42px);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--white);
+}
+
+.seminar-card__desc {
+  margin-top: 18px;
+  color: var(--gray);
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 820px;
+}
+
+/* Metadata grid */
+.seminar-card__meta-grid {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.seminar-meta-item {
+  background: rgba(3, 18, 28, 0.55);
+  border: 1px solid var(--line);
+  padding: 18px 20px;
+  border-radius: 3px;
+  transition: all 0.3s var(--ease);
+}
+.seminar-meta-item:hover {
+  border-color: rgba(0, 207, 255, 0.3);
+  background: rgba(3, 18, 28, 0.8);
+}
+
+.seminar-meta-item__label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 6px;
+}
+
+.seminar-meta-item__value {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--white);
+}
+
+/* Spots remaining meter */
+.seminar-card__spots {
+  margin-top: 32px;
+  padding: 22px 24px;
+  background: rgba(0, 207, 255, 0.04);
+  border: 1px solid rgba(0, 207, 255, 0.15);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.seminar-card__spots-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.seminar-card__spots-label {
+  color: var(--gray);
+}
+.seminar-card__spots-count {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.seminar-card__progress-track {
+  width: 100%;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.seminar-card__progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--cyan), var(--green));
+  border-radius: 3px;
+  transition: width 1s var(--ease);
+}
+
+/* Countdown display */
+.seminar-countdown {
+  margin-top: 44px;
+  padding-top: 36px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+.seminar-countdown__label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 24px;
+  display: block;
+}
+
+.seminar-countdown__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.countdown-box {
+  background: rgba(3, 18, 28, 0.8);
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  box-shadow: inset 0 0 20px rgba(0, 207, 255, 0.03);
+}
+
+.countdown-box__num {
+  font-family: var(--font-mono);
+  font-size: clamp(28px, 4.5vw, 44px);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--white);
+  text-shadow: 0 0 20px rgba(0, 207, 255, 0.3);
+}
+
+.countdown-box__unit {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-top: 10px;
+}
+
+.seminar-card__cta {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ==========================================================
+   3. ¿QUÉ APRENDERÁS?
+   ========================================================== */
+.seminar-learn {
+  padding: 150px 24px;
+  background: var(--background);
+  position: relative;
+}
+
+.seminar-learn__header {
+  max-width: var(--container);
+  margin: 0 auto 70px;
+  text-align: center;
+}
+.seminar-learn__header .eyebrow {
+  justify-content: center;
+}
+.seminar-learn__header .eyebrow::before {
+  display: none;
+}
+
+.seminar-learn__subtitle {
+  margin-top: 16px;
+  color: var(--gray);
+  font-size: 16px;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.seminar-learn__grid {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.learn-card {
+  background: var(--background-secondary);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.4s var(--ease);
+}
+.learn-card:hover {
+  border-color: rgba(0, 207, 255, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+}
+
+.learn-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: rgba(0, 207, 255, 0.08);
+  border: 1px solid rgba(0, 207, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cyan);
+  margin-bottom: 24px;
+}
+.learn-card:hover .learn-card__icon {
+  background: rgba(124, 255, 0, 0.1);
+  border-color: rgba(124, 255, 0, 0.3);
+  color: var(--green);
+}
+
+.learn-card__title {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+
+.learn-card__text {
+  color: var(--gray);
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+
+/* ==========================================================
+   4. ¿PARA QUIÉN ES? & COMPROMISO ÉTICO
+   ========================================================== */
+.seminar-audience {
+  padding: 140px 24px;
+  background: var(--background-secondary);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+
+.seminar-audience__header {
+  max-width: var(--container);
+  margin: 0 auto 60px;
+  text-align: center;
+}
+.seminar-audience__header .eyebrow {
+  justify-content: center;
+}
+.seminar-audience__header .eyebrow::before {
+  display: none;
+}
+
+.seminar-audience__grid {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.audience-card {
+  background: rgba(3, 18, 28, 0.6);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 34px 26px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s var(--ease);
+}
+.audience-card:hover {
+  border-color: var(--green);
+  background: rgba(3, 18, 28, 0.9);
+}
+
+.audience-card__badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.audience-card__title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.audience-card__text {
+  color: var(--gray);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* Ethical Commitment Box */
+.ethical-box {
+  max-width: var(--container);
+  margin: 56px auto 0;
+  background: linear-gradient(135deg, rgba(7, 28, 41, 0.9) 0%, rgba(15, 61, 58, 0.35) 100%);
+  border: 1px solid rgba(0, 207, 255, 0.28);
+  border-radius: 4px;
+  padding: 36px 44px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ethical-box::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--cyan), var(--green));
+}
+
+.ethical-box__icon-wrap {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: rgba(0, 207, 255, 0.1);
+  border: 1px solid rgba(0, 207, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--cyan);
+}
+
+.ethical-box__content {
+  flex: 1;
+}
+
+.ethical-box__title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.ethical-box__heading {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.ethical-box__text {
+  color: var(--gray);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ==========================================================
+   5. EXPERIENCIA FINANCEMIND (3 PILARES)
+   ========================================================== */
+.seminar-exp {
+  padding: 160px 24px;
+  background: var(--background);
+  position: relative;
+  overflow: hidden;
+}
+
+.seminar-exp__header {
+  max-width: var(--container);
+  margin: 0 auto 80px;
+  text-align: center;
+}
+.seminar-exp__header .eyebrow {
+  justify-content: center;
+}
+.seminar-exp__header .eyebrow::before {
+  display: none;
+}
+
+.seminar-exp__quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(24px, 3.6vw, 38px);
+  color: var(--white);
+  margin-top: 20px;
+  line-height: 1.3;
+}
+
+.seminar-exp__grid {
+  max-width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.pillar-card {
+  background: var(--background-secondary);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 48px 36px;
+  position: relative;
+  transition: all 0.4s var(--ease);
+}
+.pillar-card:hover {
+  border-color: var(--green);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.pillar-card__number {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: var(--cyan);
+  display: block;
+  margin-bottom: 20px;
+}
+
+.pillar-card__title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 14px;
+  letter-spacing: 0.02em;
+}
+
+.pillar-card__text {
+  color: var(--gray);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ==========================================================
+   6. AGENDA
+   ========================================================== */
+.seminar-agenda {
+  padding: 150px 24px;
+  background: var(--background-secondary);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+
+.seminar-agenda__header {
+  max-width: var(--container);
+  margin: 0 auto 70px;
+  text-align: center;
+}
+.seminar-agenda__header .eyebrow {
+  justify-content: center;
+}
+.seminar-agenda__header .eyebrow::before {
+  display: none;
+}
+
+.seminar-agenda__timeline {
+  max-width: 920px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.agenda-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  background: rgba(3, 18, 28, 0.65);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 30px 32px;
+  transition: all 0.35s var(--ease);
+}
+.agenda-item:hover {
+  border-color: rgba(0, 207, 255, 0.4);
+  background: rgba(3, 18, 28, 0.9);
+  padding-left: 38px;
+}
+
+.agenda-item__num {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--cyan);
+  background: rgba(0, 207, 255, 0.08);
+  border: 1px solid rgba(0, 207, 255, 0.2);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.agenda-item:hover .agenda-item__num {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--background);
+}
+
+.agenda-item__content {
+  flex: 1;
+}
+
+.agenda-item__title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.agenda-item__desc {
+  color: var(--gray);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+/* ==========================================================
+   7. CTA FINAL Y FORMULARIO DE REGISTRO
+   ========================================================== */
+.seminar-reg {
+  padding: 160px 24px;
+  background: linear-gradient(180deg, #010A11 0%, var(--background) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.seminar-reg__container {
+  max-width: 980px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.seminar-reg__header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.seminar-reg__header .eyebrow {
+  justify-content: center;
+}
+.seminar-reg__header .eyebrow::before {
+  display: none;
+}
+
+.seminar-reg__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(30px, 4.8vw, 52px);
+  line-height: 1.15;
+  margin-top: 18px;
+}
+
+.seminar-reg__text {
+  margin-top: 18px;
+  color: var(--gray);
+  font-size: 16px;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Registration Card Form */
+.seminar-form-card {
+  background: rgba(7, 28, 41, 0.85);
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  padding: 48px 44px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(16px);
+  position: relative;
+}
+
+.seminar-form-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyan), var(--green));
+}
+
+.seminar-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group--full {
+  grid-column: 1 / -1;
+}
+
+.form-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.form-input,
+.form-select {
+  background: rgba(3, 18, 28, 0.7);
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
+  padding: 14px 18px;
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  transition: all 0.3s var(--ease);
+}
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 16px rgba(124, 255, 0, 0.2);
+}
+
+.form-select option {
+  background: #03121C;
+  color: var(--white);
+}
+
+/* Features checklist */
+.seminar-form__perks {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.perk-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--gray);
+  font-size: 13.5px;
+}
+
+.perk-item__check {
+  color: var(--green);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Form Actions */
+.seminar-form__actions {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.seminar-form__submit {
+  width: 100%;
+  max-width: 420px;
+}
+
+.seminar-form__direct-wa {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--cyan);
+  transition: color 0.3s var(--ease);
+}
+.seminar-form__direct-wa:hover {
+  color: var(--green);
+}
+
+/* Success Card */
+.seminar-success {
+  text-align: center;
+  padding: 30px 10px;
+}
+
+.seminar-success__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(124, 255, 0, 0.12);
+  border: 1px solid rgba(124, 255, 0, 0.4);
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin: 0 auto 24px;
+}
+
+.seminar-success__title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--white);
+}
+
+.seminar-success__text {
+  color: var(--gray);
+  font-size: 15px;
+  max-width: 480px;
+  margin: 14px auto 30px;
+  line-height: 1.6;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 1024px) {
+  .seminar-card__meta-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .seminar-learn__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .seminar-audience__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .seminar-exp__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .seminar-hero {
+    padding: 120px 20px 60px;
+  }
+  .seminar-card {
+    padding: 32px 20px;
+  }
+  .seminar-card__meta-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .seminar-countdown__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .seminar-learn__grid {
+    grid-template-columns: 1fr;
+  }
+  .seminar-audience__grid {
+    grid-template-columns: 1fr;
+  }
+  .ethical-box {
+    flex-direction: column;
+    padding: 28px 20px;
+    align-items: flex-start;
+  }
+  .agenda-item {
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 20px;
+  }
+  .seminar-form-grid {
+    grid-template-columns: 1fr;
+  }
+  .seminar-form__perks {
+    grid-template-columns: 1fr;
+  }
+  .seminar-form-card {
+    padding: 32px 20px;
+  }
+}
