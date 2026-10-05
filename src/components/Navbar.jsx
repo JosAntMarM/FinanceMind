@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import SectionLink from './SectionLink'
 import logoBadge from '../assets/images/logo-badge.png'
-import { NAV_LINKS, WHATSAPP_URL } from '../constants'
+import { NAV_LINKS, WHATSAPP_URL, SEMINAR_URL } from '../constants'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -34,14 +34,24 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <a
-          href={WHATSAPP_URL}
-          className="btn btn--primary btn--nav"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Comenzar
-        </a>
+        <div className="navbar__ctas">
+          <a
+            href={SEMINAR_URL}
+            className="btn btn--ghost btn--nav"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Seminario
+          </a>
+          <a
+            href={WHATSAPP_URL}
+            className="btn btn--primary btn--nav"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Comenzar
+          </a>
+        </div>
 
         <button
           className="navbar__burger"
@@ -67,6 +77,15 @@ export default function Navbar() {
             {link.label}
           </SectionLink>
         ))}
+        <a
+          href={SEMINAR_URL}
+          className="btn btn--ghost"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={closeMenu}
+        >
+          Seminario
+        </a>
         <a
           href={WHATSAPP_URL}
           className="btn btn--primary"

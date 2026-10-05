@@ -5,6 +5,9 @@ export const TIKTOK_URL = 'https://www.tiktok.com/@financemindperu'
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/jesus-andree-rios-echegaray/'
 export const YOUTUBE_URL = '#'
 
+export const SEMINAR_URL =
+  'https://app.seminariocreandoriqueza.com/oferta-a/?fbc_id=120249385293880584&h_ad_id=120249904327480584'
+
 export const NAV_LINKS = [
   { href: '#top', label: 'Inicio' },
   { href: '#academia', label: 'Academia' },

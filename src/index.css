@@ -162,6 +162,12 @@ section { position: relative; }
   gap: 24px;
 }
 
+.navbar__ctas {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .navbar__logo {
   display: flex;
   align-items: center;
